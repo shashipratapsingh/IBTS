@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class UniversityRepositoryImpl implements UniversityRepository{
 
-    @Autowired
+
     private final JdbcTemplate jdbcTemplate;
 
     public UniversityRepositoryImpl(JdbcTemplate jdbcTemplate) {

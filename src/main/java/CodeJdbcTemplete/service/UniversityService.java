@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UniversityService {
-    @Autowired
     private final UniversityRepository universityRepository;
 
     public UniversityService(UniversityRepository universityRepository) {
