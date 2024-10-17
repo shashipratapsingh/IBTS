@@ -64,5 +64,21 @@ public class UniversityRepositoryImpl implements UniversityRepository{
             throw new GlobleExceptionHandle("University not found with University Email: " + universityEmail, 404);
         }
     }
+
+    public University findByEmailOnly(String universityEmail) {
+        return jdbcTemplate.queryForObject(Constant.GET_UNIVERSITY_BY_EMAIL_ONLY,new Object[]{universityEmail},new UniversityRowMapperForEmail()
+        );
+    }
+
+    private static class UniversityRowMapperForEmail implements RowMapper<University> {
+        @Override
+        public University mapRow(ResultSet rs, int rowNum) throws SQLException {
+            return University.builder()
+                    .id(rs.getLong("id"))
+                    .universityEmail(rs.getString("universityEmail"))
+                    .build();
+        }
+    }
+
 }
 

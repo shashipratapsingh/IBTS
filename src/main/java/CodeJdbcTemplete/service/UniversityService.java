@@ -4,6 +4,7 @@ import CodeJdbcTemplete.controller.UniversityController;
 import CodeJdbcTemplete.model.University;
 import CodeJdbcTemplete.repository.UniversityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -24,4 +25,14 @@ public class UniversityService {
     public University findByEmail(String universityEmail) {
         return universityRepository.findByEmail(universityEmail);
     }
+
+    public University getUniversityByEmailOnly(String universityEmail) {
+        try {
+            return universityRepository.findByEmailOnly(universityEmail);
+        } catch (EmptyResultDataAccessException e) {
+            // Return null if no result is found, indicating email is available for use
+            return null;
+        }
+    }
+
 }

@@ -1,6 +1,7 @@
 package CodeJdbcTemplete.model;
 
 import lombok.*;
+import org.springframework.http.HttpStatusCode;
 
 import java.time.LocalDate;
 import java.util.Date;

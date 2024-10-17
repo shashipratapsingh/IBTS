@@ -7,4 +7,5 @@ public interface UniversityRepository {
 
     public University findById(int id);
     public University findByEmail(String universityEmail);
+    public University findByEmailOnly(String universityEmail);
 }
