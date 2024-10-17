@@ -12,7 +12,6 @@ public class UniversityService {
     public UniversityService(UniversityRepository universityRepository) {
         this.universityRepository = universityRepository;
     }
-
     public void saveUniversity(University university) {
         universityRepository.save(university);
     }

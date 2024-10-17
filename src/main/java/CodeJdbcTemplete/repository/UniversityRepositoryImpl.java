@@ -1,7 +1,7 @@
 package CodeJdbcTemplete.repository;
 
 import CodeJdbcTemplete.model.University;
-import org.springframework.beans.factory.annotation.Autowired;
+import CodeJdbcTemplete.utill.Constant;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -16,8 +16,11 @@ public class UniversityRepositoryImpl implements UniversityRepository{
     }
 
     @Override
-    public  int save(University university) {
-        String sql = "INSERT INTO university (universityName, universityCity) VALUES (?, ?)";
-        return jdbcTemplate.update(sql, university.getUniversityName(), university.getUniversityCity());
+    public int save(University university) {
+        String sql = Constant.SAVE_UNIVERCITY;
+        return jdbcTemplate.update(sql, university.getUniversityName(), university.getUniversityCity(),university.getUniversityAddress()
+        ,university.getUniversityContact(),university.getUniversityEmail(),university.getUniversityZipCode(),university.getRemark(),university.getCreateBy()
+                ,university.getUpdateBy()
+        );
     }
 }
