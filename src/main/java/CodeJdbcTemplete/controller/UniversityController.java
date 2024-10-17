@@ -1,7 +1,9 @@
 package CodeJdbcTemplete.controller;
 
+import CodeJdbcTemplete.CustomException.GlobleExceptionHandle;
 import CodeJdbcTemplete.model.University;
 import CodeJdbcTemplete.service.UniversityService;
+import CodeJdbcTemplete.utill.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,7 +22,10 @@ public class UniversityController {
 
     @PostMapping("/university")
     public String saveUniversity(@RequestBody University university) {
-        universityService.saveUniversity(university);
+        if(university!=null)
+            universityService.saveUniversity(university);
+        else
+            throw new GlobleExceptionHandle(Constant.SAVE_UNIVERCITY);
         return "University saved successfully!";
     }
 }
