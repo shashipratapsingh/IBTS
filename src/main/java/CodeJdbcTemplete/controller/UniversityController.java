@@ -41,4 +41,20 @@ public class UniversityController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No university found with ID: " + id);
         }
     }
+
+    @GetMapping("/getUniversityByEmailId/{universityEmail}")
+    public ResponseEntity<?> getUniversityById(@PathVariable String universityEmail) {
+        try {
+            University university = universityService.findByEmail(universityEmail);
+            if (university != null) {
+                return ResponseEntity.ok(university);
+            }else {
+                return ResponseEntity.noContent().build();
+            }
+        }catch (GlobleExceptionHandle e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No university found with Email ID: " + universityEmail);
+        }
+    }
+
+
 }

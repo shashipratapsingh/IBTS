@@ -6,4 +6,5 @@ public interface UniversityRepository {
     int save(University university);
 
     public University findById(int id);
+    public University findByEmail(String universityEmail);
 }

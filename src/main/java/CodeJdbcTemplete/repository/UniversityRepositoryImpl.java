@@ -55,5 +55,14 @@ public class UniversityRepositoryImpl implements UniversityRepository{
                     .build();
         }
     }
+
+    @Override
+    public University findByEmail(String universityEmail) {
+        try {
+            return jdbcTemplate.queryForObject(Constant.GET_UNIVERCITY_BY_UniversityEmail,new Object[]{universityEmail},new UniversityRowMapper());
+        }catch (Exception e) {
+            throw new GlobleExceptionHandle("University not found with University Email: " + universityEmail, 404);
+        }
+    }
 }
 
