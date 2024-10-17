@@ -74,7 +74,6 @@ public class UniversityRepositoryImpl implements UniversityRepository{
         @Override
         public University mapRow(ResultSet rs, int rowNum) throws SQLException {
             return University.builder()
-                    .id(rs.getLong("id"))
                     .universityEmail(rs.getString("universityEmail"))
                     .build();
         }

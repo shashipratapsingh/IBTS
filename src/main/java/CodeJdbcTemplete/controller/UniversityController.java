@@ -3,13 +3,9 @@ package CodeJdbcTemplete.controller;
 import CodeJdbcTemplete.CustomException.GlobleExceptionHandle;
 import CodeJdbcTemplete.model.University;
 import CodeJdbcTemplete.service.UniversityService;
-import CodeJdbcTemplete.utill.Constant;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Objects;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -31,7 +27,6 @@ public class UniversityController {
             return ResponseEntity.status(HttpStatus.CONFLICT)
                     .body("University with this email already exists!");
         }
-
         try {
             // Save the new university as no conflict was found
             universityService.saveUniversity(university);
