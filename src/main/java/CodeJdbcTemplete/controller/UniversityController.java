@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+
 @RestController
 @RequestMapping("/api/v1")
 public class UniversityController {
@@ -28,6 +30,9 @@ public class UniversityController {
                     .body("University with this email already exists!");
         }
         try {
+            // Set timestamps before saving
+            university.setCreateBy(LocalDateTime.now()); // Set creation time
+            university.setUpdateBy(LocalDateTime.now()); // Set update time (same as create for new entries)
             // Save the new university as no conflict was found
             universityService.saveUniversity(university);
             return ResponseEntity.status(HttpStatus.CREATED)

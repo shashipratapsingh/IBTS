@@ -4,6 +4,7 @@ import lombok.*;
 import org.springframework.http.HttpStatusCode;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
@@ -21,6 +22,6 @@ public class University {
     private String universityEmail;
     private String universityZipCode;
     private String remark;
-    private String createBy;
-    private String updateBy;
+    private LocalDateTime createBy; // Change to LocalDateTime
+    private LocalDateTime updateBy; // Change to LocalDateTime
 }

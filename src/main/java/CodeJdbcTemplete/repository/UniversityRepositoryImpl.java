@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 
 @Repository
 public class UniversityRepositoryImpl implements UniversityRepository{
@@ -23,9 +24,16 @@ public class UniversityRepositoryImpl implements UniversityRepository{
     @Override
     public int save(University university) {
         String sql = Constant.SAVE_UNIVERCITY;
-        return jdbcTemplate.update(sql, university.getUniversityName(), university.getUniversityCity(),university.getUniversityAddress()
-        ,university.getUniversityContact(),university.getUniversityEmail(),university.getUniversityZipCode(),university.getRemark(),university.getCreateBy()
-                ,university.getUpdateBy()
+        return jdbcTemplate.update(sql,
+                university.getUniversityName(),
+                university.getUniversityCity(),
+                university.getUniversityAddress(),
+                university.getUniversityContact(),
+                university.getUniversityEmail(),
+                university.getUniversityZipCode(),
+                university.getRemark(),
+                university.getCreateBy(), // Make sure this is LocalDateTime
+                university.getUpdateBy()  // Make sure this is LocalDateTime
         );
     }
 
@@ -50,12 +58,11 @@ public class UniversityRepositoryImpl implements UniversityRepository{
                     .universityEmail(rs.getString("universityEmail"))
                     .universityZipCode(rs.getString("universityZipCode"))
                     .remark(rs.getString("remark"))
-                    .createBy(rs.getString("createBy"))
-                    .updateBy(rs.getString("updateBy"))
+                    .createBy(rs.getTimestamp("createBy") != null ? rs.getTimestamp("createBy").toLocalDateTime() : null)
+                    .updateBy(rs.getTimestamp("updateBy") != null ? rs.getTimestamp("updateBy").toLocalDateTime() : null)
                     .build();
         }
     }
-
     @Override
     public University findByEmail(String universityEmail) {
         try {
