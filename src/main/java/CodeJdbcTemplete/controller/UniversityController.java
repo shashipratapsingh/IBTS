@@ -32,11 +32,11 @@ public class UniversityController {
     public ResponseEntity<?> getUniversityById(@PathVariable int id) {
         try {
             University university = universityService.getUniversityById(id);
-            if (university != null) {
+            if (university != null)
                 return ResponseEntity.ok(university);
-            }else {
+            else
                 return ResponseEntity.noContent().build();
-            }
+
         }catch (GlobleExceptionHandle e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No university found with ID: " + id);
         }
@@ -46,11 +46,11 @@ public class UniversityController {
     public ResponseEntity<?> getUniversityById(@PathVariable String universityEmail) {
         try {
             University university = universityService.findByEmail(universityEmail);
-            if (university != null) {
+            if (university != null)
                 return ResponseEntity.ok(university);
-            }else {
+            else
                 return ResponseEntity.noContent().build();
-            }
+
         }catch (GlobleExceptionHandle e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No university found with Email ID: " + universityEmail);
         }
