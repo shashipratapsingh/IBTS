@@ -3,6 +3,7 @@ package CodeJdbcTemplete.controller;
 import CodeJdbcTemplete.CustomException.GlobleExceptionHandle;
 import CodeJdbcTemplete.model.University;
 import CodeJdbcTemplete.service.UniversityService;
+import CodeJdbcTemplete.utill.Constant;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +28,7 @@ public class UniversityController {
         if (existingUniversityResponse != null) {
             // Return a 409 Conflict response if the email already exists
             return ResponseEntity.status(HttpStatus.CONFLICT)
-                    .body("University with this email already exists!");
+                    .body(Constant.EMAIL_ALREADY_EXIST);
         }
         try {
             // Set timestamps before saving
@@ -40,7 +41,7 @@ public class UniversityController {
         } catch (Exception e) {
             // Handle any other exceptions that occur during saving
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .body("Invalid input payload!");
+                    .body(Constant.INVALID_INPUT_PAYLOAD);
         }
     }
     @GetMapping("/getUniversityById/{id}")

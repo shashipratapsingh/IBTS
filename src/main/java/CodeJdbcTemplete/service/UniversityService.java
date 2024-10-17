@@ -1,9 +1,7 @@
 package CodeJdbcTemplete.service;
 
-import CodeJdbcTemplete.controller.UniversityController;
 import CodeJdbcTemplete.model.University;
 import CodeJdbcTemplete.repository.UniversityRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 

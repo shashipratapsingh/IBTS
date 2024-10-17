@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDateTime;
 
 @Repository
 public class UniversityRepositoryImpl implements UniversityRepository{
@@ -22,9 +21,9 @@ public class UniversityRepositoryImpl implements UniversityRepository{
     }
 
     @Override
-    public int save(University university) {
+    public void save(University university) {
         String sql = Constant.SAVE_UNIVERCITY;
-        return jdbcTemplate.update(sql,
+        jdbcTemplate.update(sql,
                 university.getUniversityName(),
                 university.getUniversityCity(),
                 university.getUniversityAddress(),

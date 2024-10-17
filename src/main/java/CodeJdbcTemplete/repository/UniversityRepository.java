@@ -3,9 +3,9 @@ package CodeJdbcTemplete.repository;
 import CodeJdbcTemplete.model.University;
 
 public interface UniversityRepository {
-    int save(University university);
+    void save(University university);
 
-    public University findById(int id);
-    public University findByEmail(String universityEmail);
-    public University findByEmailOnly(String universityEmail);
+     University findById(int id);
+      University findByEmail(String universityEmail);
+      University findByEmailOnly(String universityEmail);
 }
