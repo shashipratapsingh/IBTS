@@ -15,4 +15,8 @@ public class UniversityService {
     public void saveUniversity(University university) {
         universityRepository.save(university);
     }
+
+    public University getUniversityById(int id) {
+        return universityRepository.findById(id);
+    }
 }
