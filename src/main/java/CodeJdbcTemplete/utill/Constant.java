@@ -8,4 +8,9 @@ public class Constant {
     public static final String INVALID_INPUT_PAYLOAD = "Invalid input payload";
     public static final String EMAIL_ALREADY_EXIST = "Email already exist";
     public static final String GET_UNIVERSITY_BY_EMAIL_ONLY = "SELECT universityEmail FROM university WHERE universityEmail = ?";
+
+
+  //  ------------------------------------------REGISTER COLLAGE------------------------------
+    public static final String REGISTER_COLLAGE="INSERT INTO Collage (collageId, collageName, collageType, collageDescription, collageStatus, collageCity, collageDate,collageLocation,collageContact,collageContactEmail, createdBy, updatedBy)" +
+          "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 }

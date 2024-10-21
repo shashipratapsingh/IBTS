@@ -31,8 +31,8 @@ public class UniversityRepositoryImpl implements UniversityRepository{
                 university.getUniversityEmail(),
                 university.getUniversityZipCode(),
                 university.getRemark(),
-                university.getCreateBy(), // Make sure this is LocalDateTime
-                university.getUpdateBy()  // Make sure this is LocalDateTime
+                university.getCreateBy(),
+                university.getUpdateBy()
         );
     }
 
