@@ -4,12 +4,14 @@ import CodeJdbcTemplete.CustomException.GlobleExceptionHandle;
 import CodeJdbcTemplete.model.Collage;
 import CodeJdbcTemplete.repository.CollageJPARepository;
 import CodeJdbcTemplete.repository.CollageRepository;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Component
 public class CollageService {
 
     private final CollageRepository collageRepository;
@@ -28,6 +30,7 @@ public class CollageService {
 
     public List<Collage> findAll()  {
         List<Collage> collages =this.collageJPARepository.findAll();
+        System.out.println("collage details"+collages);
         try {
             if (!collages.isEmpty()) {
                 return this.collageJPARepository.findAll();
