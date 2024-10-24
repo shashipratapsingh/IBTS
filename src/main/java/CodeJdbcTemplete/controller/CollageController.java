@@ -48,16 +48,16 @@ public class CollageController {
 
 
     @GetMapping("/getAll")
-    public ResponseEntity<String> findAllCollage() {
+    public ResponseEntity<List<Collage>> findAllCollage() {
         try {
             List<Collage> collage=collageService.findAll();
             if (collage.isEmpty()) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Constant.NOT_FOUND);
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
             }
         }catch (Exception e) {
             throw new GlobleExceptionHandle(Constant.NOT_FOUND);
         }
-        return null;
+        return new ResponseEntity<>(this.collageService.findAll(),HttpStatus.OK);
     }
 
 

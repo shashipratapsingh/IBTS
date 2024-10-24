@@ -14,6 +14,7 @@ public class CollageService {
 
     private final CollageRepository collageRepository;
     private final CollageJPARepository collageJPARepository;
+
     public CollageService(CollageRepository collageRepository, CollageJPARepository collageJPARepository) {
         this.collageRepository = collageRepository;
         this.collageJPARepository = collageJPARepository;
@@ -29,7 +30,7 @@ public class CollageService {
         List<Collage> collages =this.collageJPARepository.findAll();
         try {
             if (!collages.isEmpty()) {
-                return collages;
+                return this.collageJPARepository.findAll();
             }
         }catch (Exception e) {
             throw new GlobleExceptionHandle("Data not found");
