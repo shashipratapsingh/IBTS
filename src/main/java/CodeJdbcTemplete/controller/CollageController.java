@@ -5,11 +5,7 @@ import CodeJdbcTemplete.service.CollageService;
 import CodeJdbcTemplete.utill.Constant;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 
 @RestController
@@ -26,7 +22,6 @@ public class CollageController {
         try {
             collage.setCreatedBy(LocalDateTime.now()); // Set creation time
             collage.setUpdatedBy(LocalDateTime.now());
-
             collageService.registerCollage(collage);
             return ResponseEntity.status(HttpStatus.CREATED).body(collage.toString());
         }catch (Exception e) {
@@ -34,4 +29,20 @@ public class CollageController {
                     .body(Constant.INVALID_INPUT_PAYLOAD);
         }
     }
+
+    @GetMapping("getCollageById/{collageId}")
+    public ResponseEntity<String> getCollageById(@PathVariable long collageId) {
+        try{
+            Collage collage=collageService.findByCollageId(collageId);
+            if (collage!=null) {
+                return ResponseEntity.status(HttpStatus.OK).body(Constant.COLLAGE_ID);
+            }
+            return ResponseEntity.status(HttpStatus.OK).body(collage.toString());
+        }catch (Exception e) {
+
+        }
+        return null;
+    }
+
+
 }

@@ -17,5 +17,9 @@ public class CollageService {
         this.collageRepository.collageRegister(collage);
     }
 
+    public Collage findByCollageId(long collageId) {
+       return this.collageRepository.findByCollageId(collageId);
+    }
+
 
 }

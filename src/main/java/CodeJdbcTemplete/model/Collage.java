@@ -3,6 +3,7 @@ package CodeJdbcTemplete.model;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 @AllArgsConstructor
@@ -18,7 +19,7 @@ public class Collage {
     private String collageDescription;
     private String collageStatus;
     private String collageCity;
-    private String collageDate;
+    private Date collageDate;
     private String collageLocation;
     private String collageContact;
     private String collageContactEmail;
