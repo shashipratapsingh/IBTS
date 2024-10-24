@@ -1,4 +1,4 @@
-package CodeJdbcTemplete.controller;
+package CodeJdbcTemplete.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
