@@ -17,4 +17,5 @@ public class Constant {
     public static final String INVALID_INPUT_PAYLOAD = "Invalid input payload";
     public static final String EMAIL_ALREADY_EXIST = "Email already exist";
     public static final String COLLAGE_ID = "Collage id not Exist";
+    public static final String NOT_FOUND = "DATA NOT FOUND";
 }

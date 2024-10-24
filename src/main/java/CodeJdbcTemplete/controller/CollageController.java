@@ -1,5 +1,6 @@
 package CodeJdbcTemplete.controller;
 
+import CodeJdbcTemplete.CustomException.GlobleExceptionHandle;
 import CodeJdbcTemplete.model.Collage;
 import CodeJdbcTemplete.service.CollageService;
 import CodeJdbcTemplete.utill.Constant;
@@ -7,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -33,13 +36,26 @@ public class CollageController {
     @GetMapping("getCollageById/{collageId}")
     public ResponseEntity<String> getCollageById(@PathVariable long collageId) {
         try{
-            Collage collage=collageService.findByCollageId(collageId);
-            if (collage!=null) {
-                return ResponseEntity.status(HttpStatus.OK).body(Constant.COLLAGE_ID);
+            Optional<Collage> collage=collageService.findByCollageId(collageId);
+            if (collage.isPresent()) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Constant.COLLAGE_ID);
             }
             return ResponseEntity.status(HttpStatus.OK).body(collage.toString());
         }catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Constant.COLLAGE_ID);
+        }
+    }
 
+
+    @GetMapping("/getAll")
+    public ResponseEntity<String> findAllCollage() {
+        try {
+            List<Collage> collage=collageService.findAll();
+            if (collage.isEmpty()) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Constant.NOT_FOUND);
+            }
+        }catch (Exception e) {
+            throw new GlobleExceptionHandle(Constant.NOT_FOUND);
         }
         return null;
     }
