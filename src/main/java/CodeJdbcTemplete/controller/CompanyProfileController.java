@@ -3,6 +3,7 @@ package CodeJdbcTemplete.controller;
 import CodeJdbcTemplete.CustomException.GlobleExceptionHandle;
 import CodeJdbcTemplete.model.CompanyProfile;
 import CodeJdbcTemplete.service.CompanyService;
+import CodeJdbcTemplete.utill.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,12 +23,13 @@ public class CompanyProfileController {
        CompanyProfile companyProfile1= companyService.save(companyProfile);
        try {
            if (companyProfile1 != null) {
-               return ResponseEntity.status(HttpStatus.OK).body("Data saved successfully");
+               return ResponseEntity.status(HttpStatus.OK).body(Constant.SAVE_DATA);
            }
        }catch (GlobleExceptionHandle e) {
-           throw new GlobleExceptionHandle(e.getMessage());
+           //throw new GlobleExceptionHandle(Constant.COMPANY_PROFILE_NOT_SAVED);
+           throw new GlobleExceptionHandle("sdas",404);
        }
-       return ResponseEntity.status(HttpStatus.OK).body("Data saved successfully");
+       return ResponseEntity.status(HttpStatus.OK).body(Constant.SAVE_DATA);
     }
 
 }

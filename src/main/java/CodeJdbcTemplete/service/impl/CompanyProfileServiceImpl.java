@@ -20,7 +20,7 @@ public class CompanyProfileServiceImpl implements CompanyService {
             companyProfile.setUpdatedBy("SystemUser");
             this.companyRepository.save(companyProfile);
         }catch (Exception e) {
-            throw new GlobleExceptionHandle(Constant.INVALID_INPUT_PAYLOAD);
+            throw new GlobleExceptionHandle(Constant.COMPANY_ALREADY_EXIST);
         }
         return companyProfile;
     }

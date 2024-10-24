@@ -18,4 +18,7 @@ public class Constant {
     public static final String EMAIL_ALREADY_EXIST = "Email already exist";
     public static final String COLLAGE_ID = "Collage id not Exist";
     public static final String NOT_FOUND = "DATA NOT FOUND";
+    public static final String COMPANY_PROFILE_NOT_SAVED = "Company PROFILE NOT SAVED";
+    public static final String SAVE_DATA = "Data saved successfully";
+    public static final String COMPANY_ALREADY_EXIST = "company already exist";
 }
